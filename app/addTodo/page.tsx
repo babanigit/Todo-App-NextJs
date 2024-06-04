@@ -4,7 +4,7 @@
 const page = () => {
   return (
     <>
-    <div> todo page</div>
+    <div> addTodo page</div>
     </>
 
 )
