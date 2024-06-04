@@ -23,9 +23,11 @@ export const getTodo = async () => {
 };
 
 const TodoList = async () => {
-  const { todo } = await getTodo();
 
-  console.log(todo)
+    const { todo } = await getTodo();
+
+    console.log(todo)
+
 
   return (
     <>
