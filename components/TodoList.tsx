@@ -1,10 +1,14 @@
-
 import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
 import RemoveBtn from "./RemoveBtn";
 
-export const getTodo = async () => {
+interface Itodo {
+  _id: string | null | undefined;
+  title: string;
+  description: string;
+}
 
+export const getTodo = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/todos", {
       cache: "no-store",
@@ -16,7 +20,6 @@ export const getTodo = async () => {
     }
 
     return res.json();
-
   } catch (error) {
     console.log("Error loading todos: ", error);
   }
@@ -24,9 +27,9 @@ export const getTodo = async () => {
 
 const TodoList = async () => {
   try {
-    const todoResponse = await getTodo();
+    const  { todoResponse } = await getTodo();
 
-    console.log(" the todoResponse is  ", todoResponse)
+    console.log(" the todoResponse is  ", todoResponse);
 
     if (!todoResponse || !todoResponse.todo) {
       // Handle case where todo data is not available
@@ -39,9 +42,9 @@ const TodoList = async () => {
       <>
         <div> todo lists </div>
 
-        {todo ? (
+        {/* {todo ? ( */}
           <div>
-            {todo.map((t:unknown) => (
+            {todo.map((t: Itodo) => (
               <div
                 key={t._id}
                 className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
@@ -60,9 +63,9 @@ const TodoList = async () => {
               </div>
             ))}
           </div>
-        ) : (
+        {/* ) : (
           <div> no todo list</div>
-        )}
+        )} */}
       </>
     );
   } catch (error) {
