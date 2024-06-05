@@ -1,25 +1,13 @@
-
-
 import mongoose from "mongoose";
 
-const DB: string | undefined = process.env.MONGODB_URI!;
+const connectMongoDb = async () => {
 
-const connectDb = async (): Promise<void> => {
-  if (!DB) {
-    throw new Error("Database connection string is not provided. -b");
-  }
-
-  try {
-    const connect = await mongoose.connect(DB);
-    console.log(
-      "💚[database connected]:",
-      connect.connection.host,
-      connect.connection.name
-    );
-  } catch (error) {
-    console.error("💢Failed to connect to the database");
-    console.error(error);
-  }
+    try {
+        mongoose.connect(process.env.MONGO_STRING!);
+        console.log("connected to mongoDb");
+    } catch (error) {
+        console.log(error)
+    }
 };
 
-export default connectDb;
+export default connectMongoDb;

@@ -1,4 +1,8 @@
-import connectDb from "@/libs/mongodbConnect";
+// import connectDb from "@/libs/mongodbConnect";
+
+
+
+import connectMongoDb from "@/libs/mongodbConnect";
 import todoModel from "@/model/todoModel";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -10,7 +14,7 @@ export async function GET() {
 
     console.log("from GET")
 
-    await connectDb();
+    await connectMongoDb();
 
     const todos= await todoModel.find();
 

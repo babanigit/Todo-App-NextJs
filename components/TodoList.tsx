@@ -4,8 +4,8 @@ import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
 import RemoveBtn from "./RemoveBtn";
 
-
 export const getTodo = async () => {
+
   try {
     const res = await fetch("http://localhost:3000/api/todos", {
       cache: "no-store",
@@ -13,31 +13,35 @@ export const getTodo = async () => {
 
     if (!res.ok) {
       console.log("failed to fetch");
-      throw new Error("Failed to fetch topics");
+      throw new Error("Failed to fetch todos");
     }
 
     return res.json();
+
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.log("Error loading todos: ", error);
   }
 };
 
 const TodoList = async () => {
+  try {
+    const todoResponse = await getTodo();
 
-    const { todo } = await getTodo();
+    console.log(" the todoResponse is  ", todoResponse)
 
-    console.log(todo)
+    if (!todoResponse || !todoResponse.todo) {
+      // Handle case where todo data is not available
+      return <div>No todo list available</div>;
+    }
 
+    const { todo } = todoResponse;
 
-  return (
-    <>
-      <div> todo lists </div>
-      
-      {
-        todo == false
-        ?( <div> no todo list</div> )
-        :( 
-            <div>
+    return (
+      <>
+        <div> todo lists </div>
+
+        {todo ? (
+          <div>
             {todo.map((t: ITodo) => (
               <div
                 key={t._id}
@@ -47,7 +51,7 @@ const TodoList = async () => {
                   <h2 className="font-bold text-2xl">{t.title}</h2>
                   <div>{t.description}</div>
                 </div>
-    
+
                 <div className="flex gap-2">
                   <RemoveBtn id={t._id} />
                   <Link href={`/editTopic/${t._id}`}>
@@ -57,11 +61,15 @@ const TodoList = async () => {
               </div>
             ))}
           </div>
-        )
-      }
-     
-    </>
-  );
+        ) : (
+          <div> no todo list</div>
+        )}
+      </>
+    );
+  } catch (error) {
+    console.log("Error in fetching todos:", error);
+    return <div>Error occurred while loading todos</div>;
+  }
 };
 
 export default TodoList;
