@@ -1,4 +1,3 @@
-import { ITodo } from "@/model/todoModel";
 
 import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
@@ -42,7 +41,7 @@ const TodoList = async () => {
 
         {todo ? (
           <div>
-            {todo.map((t: ITodo) => (
+            {todo.map((t:unknown) => (
               <div
                 key={t._id}
                 className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
