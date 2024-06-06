@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { Key, useState } from "react";
 
 interface IProps {
@@ -9,6 +10,8 @@ interface IProps {
 }
 
 const EditTopicForm = ({ id, title, description }: IProps) => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({});
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,10 +20,25 @@ const EditTopicForm = ({ id, title, description }: IProps) => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    try {
+      const res = await fetch(`http://localhost:3000/api/todos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    
-
+      if (!res.ok) {
+        throw new Error("Failed to update topic");
+      }
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
