@@ -46,7 +46,7 @@ const page = () => {
               onChange={handleChange}
               id="title"
               // value={title}
-              className="border rounded-xl text-black border-slate-500 px-8 py-2"
+              className="border rounded-xl text-white border-slate-500 px-8 py-2"
               type="text"
               placeholder="todo Title"
             />
@@ -55,7 +55,7 @@ const page = () => {
               onChange={handleChange}
               // value={description}
               id="description"
-              className="border rounded-xl text-black border-slate-500 px-8 py-2"
+              className="border rounded-xl text-white border-slate-500 px-8 py-2"
               type="text"
               placeholder="Todo Description"
             />
