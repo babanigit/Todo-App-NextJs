@@ -47,17 +47,17 @@ const EditTopicForm = ({ id, title, description }: IProps) => {
         <input
           onChange={handleChange}
           id="newTitle"
-          className="border border-slate-500 px-8 py-2 text-white "
+          className="border border-slate-500 px-8 py-2 text-white rounded-xl "
           type="text"
-          placeholder="Topic Title"
+          placeholder="Todo Title"
         />
 
         <input
           onChange={handleChange}
           id="newDescription"
-          className="border border-slate-500 px-8 py-2 text-white "
+          className="border border-slate-500 px-8 py-2 text-white rounded-xl "
           type="text"
-          placeholder="Topic Description"
+          placeholder="Todo Description"
         />
 
         <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">

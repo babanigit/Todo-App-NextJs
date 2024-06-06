@@ -38,7 +38,7 @@ export default async function TodoList() {
           {todo.todos.map((t: Itodo) => (
             <div
               key={t._id}
-              className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
+              className="p-4 border border-slate-300 rounded-3xl  my-3 flex justify-between gap-5 items-start"
             >
               <div>
                 <h2 className="font-bold text-2xl">{t.title}</h2>

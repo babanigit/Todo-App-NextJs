@@ -24,7 +24,7 @@ export const Navbar = () => {
         Todo App
       </Link>
       <div className=" flex gap-3">
-        <Link className=" p-2" href={"/addTodo"}>
+        <Link className=" border-2 rounded-xl p-2" href={"/addTodo"}>
           Add Todo
         </Link>
       </div>
