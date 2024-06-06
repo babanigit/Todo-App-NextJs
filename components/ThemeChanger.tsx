@@ -7,7 +7,7 @@ const ThemeChanger = () => {
     <>
     <div className="" >
 
-<TodoList  />vs
+<TodoList  />
     </div>
     </>
 
