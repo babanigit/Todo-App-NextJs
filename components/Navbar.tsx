@@ -5,10 +5,10 @@ export const Navbar = () => {
   return (
     <nav className="flex justify-between items-center bg-slate-800 px-8 py-3">
     <Link className="text-white font-bold" href={"/"}>
-      crud in next
+      Todo App
     </Link>
     <Link className="bg-white text-black p-2" href={"/addTodo"}>
-      Add Topic
+      Add Todo
     </Link>
   </nav>
   )

@@ -36,3 +36,17 @@ export async function POST (request:NextRequest) {
     
 }
 
+// DELETE
+export async function DELETE(request:NextRequest) {
+    
+    console.log(" from DELETE ")
+
+    const id= request.nextUrl.searchParams.get("id");
+    await connectMongoDb();
+    await todoModel.findByIdAndDelete(id);
+    return NextResponse.json(
+        {message: "todo deleted"},
+        {status:200}
+    )
+}
+
